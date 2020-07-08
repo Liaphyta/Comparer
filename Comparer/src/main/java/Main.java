@@ -1,0 +1,75 @@
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
+
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(System.in));
+        List<PcapNs3> firstFileData=new ArrayList<>();
+        List<PcapNs3> secondFileData=new ArrayList<>();
+        String filePath="";
+        String filePath2="";
+        try {
+            System.out.println("Please insert path of the first file.");
+            File firstFile = new File(bufferedReader.readLine());
+            filePath=firstFile.getAbsolutePath();
+            System.out.println("Please insert path of the second file.");
+            File secondFile = new File(bufferedReader.readLine());
+            filePath2=secondFile.getAbsolutePath();
+            BufferedReader readerCSV= new BufferedReader(new FileReader(firstFile));
+            String line;
+            boolean firstLine=false;
+            float beforeExecutionTime=0.0f;
+            while((line=readerCSV.readLine())!=null)
+            {
+                if(!firstLine)
+                {
+                    firstLine=true;
+                }
+                else
+                {
+                    String[] fields=line.split(",");
+                    PcapNs3 pcap=new PcapNs3(Integer.parseInt(fields[0].replaceAll("\"","")),
+                            Float.parseFloat(fields[1].replaceAll("\"",""))-beforeExecutionTime
+                            ,fields[2],fields[3],fields[4],
+                            Integer.parseInt(fields[5].replaceAll("\"","")),fields[6]);
+                    beforeExecutionTime=Float.parseFloat(fields[1].replaceAll("\"",""));
+
+                    firstFileData.add(pcap);
+                }
+            }
+            readerCSV=new BufferedReader(new FileReader(secondFile));
+            firstLine=false;
+            beforeExecutionTime=0.0f;
+            while((line=readerCSV.readLine())!=null)
+            {
+                if(!firstLine)
+                {
+                    firstLine=true;
+                }
+                else
+                {
+                    String[] fields=line.split(",");
+                    PcapNs3 pcap=new PcapNs3(Integer.parseInt(fields[0].replaceAll("\"","")),
+                            Float.parseFloat(fields[1].replaceAll("\"",""))-beforeExecutionTime
+                            ,fields[2],fields[3],fields[4],
+                            Integer.parseInt(fields[5].replaceAll("\"","")),fields[6]);
+                    beforeExecutionTime=Float.parseFloat(fields[1].replaceAll("\"",""));
+
+                    secondFileData.add(pcap);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        ShowData extractData=new ShowData();
+        String[] temp=filePath.split(File.separator+File.separator);
+        extractData.extractData(firstFileData,temp[temp.length-1]);
+        String[] temp1=filePath2.split(File.separator+File.separator);
+        extractData.extractData(secondFileData,temp1[temp1.length-1]);
+        extractData.compare(firstFileData,secondFileData,temp[temp.length-1]+";"+temp1[temp1.length-1]);
+    }
+}
