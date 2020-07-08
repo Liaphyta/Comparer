@@ -34,6 +34,12 @@ public class Main {
                 else
                 {
                     String[] fields=line.split(",");
+                    for(int i=0;i<fields.length;i++)
+                    {
+                        System.out.println(fields[i]);
+                        fields[i] = fields[i].replaceAll("^\"+|\"+$", "");
+                        System.out.println(fields[i]);
+                    }
                     PcapNs3 pcap=new PcapNs3(Integer.parseInt(fields[0].replaceAll("\"","")),
                             Float.parseFloat(fields[1].replaceAll("\"",""))-beforeExecutionTime
                             ,fields[2],fields[3],fields[4],
@@ -55,6 +61,12 @@ public class Main {
                 else
                 {
                     String[] fields=line.split(",");
+                    for(int i=0;i<fields.length;i++)
+                    {
+                        System.out.println(fields[i]);
+                        fields[i] = fields[i].replaceAll("^\"+|\"+$", "");
+                        System.out.println(fields[i]);
+                    }
                     PcapNs3 pcap=new PcapNs3(Integer.parseInt(fields[0].replaceAll("\"","")),
                             Float.parseFloat(fields[1].replaceAll("\"",""))-beforeExecutionTime
                             ,fields[2],fields[3],fields[4],
