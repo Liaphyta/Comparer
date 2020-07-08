@@ -12,6 +12,7 @@ public class ShowData {
     public String extractData(List<PcapNs3> listPcap,String fileName) throws IOException {
         String filePath=System.getProperty("user.dir");
         File extractData=new File(filePath+File.separator+fileName.split("\\.")[0]+".txt");
+        System.out.println(extractData.getAbsolutePath());
         extractData.createNewFile();
         PrintWriter writer = new PrintWriter(extractData, StandardCharsets.UTF_8);
         Map<String,Integer> numberOfIpOrigin=new HashMap<>();

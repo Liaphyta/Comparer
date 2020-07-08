@@ -12,12 +12,14 @@ public class Main {
         List<PcapNs3> secondFileData=new ArrayList<>();
         String filePath="";
         String filePath2="";
+        File firstFile=null;
+        File secondFile=null;
         try {
             System.out.println("Please insert path of the first file.");
-            File firstFile = new File(bufferedReader.readLine());
+            firstFile = new File(bufferedReader.readLine());
             filePath=firstFile.getAbsolutePath();
             System.out.println("Please insert path of the second file.");
-            File secondFile = new File(bufferedReader.readLine());
+            secondFile = new File(bufferedReader.readLine());
             filePath2=secondFile.getAbsolutePath();
             BufferedReader readerCSV= new BufferedReader(new FileReader(firstFile));
             String line;
@@ -66,10 +68,9 @@ public class Main {
             e.printStackTrace();
         }
         ShowData extractData=new ShowData();
-        String[] temp=filePath.split(File.separator+File.separator);
-        extractData.extractData(firstFileData,temp[temp.length-1]);
-        String[] temp1=filePath2.split(File.separator+File.separator);
-        extractData.extractData(secondFileData,temp1[temp1.length-1]);
-        extractData.compare(firstFileData,secondFileData,temp[temp.length-1]+";"+temp1[temp1.length-1]);
+        System.out.println(firstFile.getName());
+        extractData.extractData(firstFileData,firstFile.getName());
+        extractData.extractData(secondFileData,secondFile.getName());
+        extractData.compare(firstFileData,secondFileData,firstFile.getName()+";"+secondFile.getName());
     }
 }
