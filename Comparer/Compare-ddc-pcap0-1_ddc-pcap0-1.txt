@@ -1,1 +1,0 @@
-The majority of the packages are not using the same protocol so you should not compare this data.

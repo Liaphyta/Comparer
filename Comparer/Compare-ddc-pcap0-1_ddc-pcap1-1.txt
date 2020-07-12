@@ -1,9 +1,0 @@
-The protocol UDP is more used in the first file with a difference of 0.0022888184%.
-------------------------------------------------------
-The average execution time of the first .pcap file is faster by 0.31578025%
-------------------------------------------------------
-The first file has 2 error packages with the protocol ICMP
-The second file has 2 error packages with the protocol ICMP
-They have the same number of error packages.
-The second data file has a higher error rate which is: 0.2051282%.
-------------------------------------------------------
