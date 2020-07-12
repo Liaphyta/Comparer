@@ -1,0 +1,28 @@
+----------------Connections-----------------------
+Ip address: 10.1.3.1 has 975 packages sent.
+Ip address: 10.1.2.1 has 2 packages sent.
+Ip address: 10.1.1.1 has 984 packages sent.
+
+Ip address: 10.1.3.1 received 986 packages. 
+Ip address: 10.1.2.1 received 973 packages. 
+Ip address: 10.1.1.1 received 2 packages. 
+
+10.1.3.1->10.1.2.1 Protocol: UDP Count: 973
+10.1.2.1->10.1.3.1 Protocol: ICMP Count: 2
+10.1.3.1->10.1.1.1 Protocol: ICMP Count: 2
+10.1.1.1->10.1.3.1 Protocol: UDP Count: 984
+--------------------------------------------------
+
+-----------------Protocol-------------------------
+The most used protocol is: UDP with a percentage of 99.79602%
+
+----------------Execution Time--------------------
+Average Execution Time 0.0046105348
+
+---------------ERROR Packages---------------------
+PcapNs3{number=1957, timeOfExecution=0.009999275, ipOrigin='10.1.3.1', ipDestination='10.1.1.1', protocol='ICMP', byteLength=58, info='Destination unreachable (Port unreachable)'}
+PcapNs3{number=1959, timeOfExecution=0.00799942, ipOrigin='10.1.3.1', ipDestination='10.1.1.1', protocol='ICMP', byteLength=58, info='Destination unreachable (Port unreachable)'}
+PcapNs3{number=1960, timeOfExecution=0.002688408, ipOrigin='10.1.2.1', ipDestination='10.1.3.1', protocol='ICMP', byteLength=58, info='Destination unreachable (Port unreachable)'}
+PcapNs3{number=1961, timeOfExecution=0.011141777, ipOrigin='10.1.2.1', ipDestination='10.1.3.1', protocol='ICMP', byteLength=58, info='Destination unreachable (Port unreachable)'}
+--------------------------------------------------
+
